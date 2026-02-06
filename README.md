@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: YAAZHINI S </h3>
+<h3>Register Number:  212224230308   </h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -54,6 +54,46 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
 
+## PROGRAM
+```
+from collections import defaultdict
+def create_graph(edges):
+    graph = defaultdict(list)
+    for u, v in edges:
+        graph[u].append(v)
+        graph[v].append(u)   
+    return graph
+
+def dfs(graph, start):
+    visited = set()
+    traversal = []
+
+    def dfs_util(node):
+        visited.add(node)
+        traversal.append(node)
+        for neighbour in graph[node]:
+            if neighbour not in visited:
+                dfs_util(neighbour)
+
+    dfs_util(start)
+    return traversal
+
+
+n, m = map(int, input().split())
+edges = []
+
+for _ in range(m):
+    u, v = input().split()
+    edges.append((u, v))
+
+start_node = edges[0][0]  
+graph = create_graph(edges)
+result = dfs(graph, start_node)
+
+print(result)
+
+```
+
 <hr>
 <h3>Sample Input</h3>
 <hr>
@@ -70,7 +110,7 @@ F H <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
-['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
+<img width="508" height="254" alt="image" src="https://github.com/user-attachments/assets/1d32718b-70a4-4985-90df-e344ae72126c" />
 
 <hr>
 
@@ -86,7 +126,8 @@ F H <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
-['0', '1', '2', '3', '4']
+<img width="398" height="169" alt="image" src="https://github.com/user-attachments/assets/b7166ec6-54ea-439f-be19-49b63270beab" />
+
 
 <hr>
 <h3>Result:</h3>
